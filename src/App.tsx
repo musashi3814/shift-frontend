@@ -1,9 +1,17 @@
 import './App.css';
-import Dashboard from './components/page';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Main from './components/main';
+import Maneger from './components/maneger/maneger'; 
+
 
 function App() {
   return (
-    <Dashboard />
+    <BrowserRouter>
+      <Routes>
+        <Route path={'/'} element={<Main/>} />
+        <Route path={'/maneger'} element={<Maneger/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

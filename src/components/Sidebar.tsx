@@ -14,11 +14,12 @@ interface Props {
     setAppOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const drawerWidth: number = 240;
+const managerAuth: boolean = true;
 
 const StyledDrawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
       '& .MuiDrawer-paper': {
-        position: 'relative',
+        position: 'fixed',
         whiteSpace: 'nowrap',
         width: drawerWidth, // assuming drawerWidth is defined elsewhere
         transition: theme.transitions.create('width', {
@@ -60,8 +61,12 @@ const Sidebar: React.FC<Props> = ({ AppOpen, setAppOpen }) => {
           <Divider />
           <List component="nav">
             {mainListItems}
-            <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
+            {managerAuth && (
+              <>
+                <Divider sx={{ my: 1 }} />
+                {secondaryListItems}
+              </>
+            )}
           </List>
         </StyledDrawer>
         </>

@@ -7,7 +7,8 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import Box from '@mui/material/Box';
 
 
 interface Props {
@@ -44,6 +45,8 @@ const StyledAppBar = styled(MuiAppBar, {
 
 const TopAppBar: React.FC<Props> = (props) => {
     const { AppOpen, setAppOpen } = props
+
+    const Name = "山田太郎";
     
     const toggleDrawer = () => {
       setAppOpen(!AppOpen);
@@ -51,7 +54,7 @@ const TopAppBar: React.FC<Props> = (props) => {
 
     return (
         <>
-        <StyledAppBar position="absolute" open={AppOpen}>
+        <StyledAppBar position="fixed" open={AppOpen}>
           <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
@@ -78,10 +81,18 @@ const TopAppBar: React.FC<Props> = (props) => {
             >
               SHIFT
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
+            <Typography variant="h6" component="div">
+              {Name}
+            </Typography>
+            <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+            
+                color="inherit"
+            >
+                <AccountCircle fontSize="large" />
             </IconButton>
           </Toolbar>
         </StyledAppBar>
